@@ -59,6 +59,15 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	categoriesMiddlewareRoute.PATCH("/:id", controllers.UpdateCategory)
 	categoriesMiddlewareRoute.DELETE("/:id", controllers.DeleteCategory)
 
+	// Help
+	r.GET("/help", controllers.GetAllHelp)
+	r.GET("/help/:id", controllers.GetAllHelp)
+	helpMiddlewareRoute := r.Group("/help")
+	helpMiddlewareRoute.Use(middlewares.JwtAuthMiddleware("admin"))
+	helpMiddlewareRoute.POST("/", controllers.CreateHelp)
+	helpMiddlewareRoute.PATCH("/:id", controllers.UpdateHelp)
+	helpMiddlewareRoute.DELETE("/:id", controllers.DeleteHelp)
+
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	return r
 }
