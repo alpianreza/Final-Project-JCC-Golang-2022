@@ -27,7 +27,7 @@ func ConnectDataBase() *gorm.DB {
 			panic(err.Error())
 		}
 
-		db.AutoMigrate(&models.User{}, &models.Movie{}, &models.AgeRatingCategory{})
+		db.AutoMigrate(&models.Posts{}, &models.PostMeta{}, &models.User{}, &models.Guest{}, &models.Category{}, &models.Comments{}, &models.CommentMeta{}, &models.Help{})
 
 		return db
 	} else {
@@ -44,7 +44,7 @@ func ConnectDataBase() *gorm.DB {
 			panic(err.Error())
 		}
 
-		db.AutoMigrate(&models.Posts{}, &models.User{})
+		db.AutoMigrate(&models.Posts{}, &models.PostMeta{}, &models.User{}, &models.Guest{}, &models.Category{}, &models.Comments{}, &models.CommentMeta{}, &models.Help{})
 		return db
 	}
 }
