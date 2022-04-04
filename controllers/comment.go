@@ -60,7 +60,7 @@ func CreateComment(c *gin.Context) {
 
 	inputComment := models.Comments{PostComment: input.CommentPost,
 		Publish:   input.Publish,
-		UserID:    UserIdCurrent,
+		UserId:    UserIdCurrent,
 		CreatedAt: time.Now(),
 	}
 
@@ -143,7 +143,7 @@ func UpdateComment(c *gin.Context) {
 
 	updatedInput := models.Comments{PostComment: input.CommentPost,
 		Publish:   input.Publish,
-		UserID:    UserIdCurrent,
+		UserId:    UserIdCurrent,
 		UpdatedAt: time.Now(),
 	}
 
@@ -173,7 +173,7 @@ func UpdateComment(c *gin.Context) {
 }
 
 //DeleteComment godoc
-// @Summary Delete Comment
+// @Summary Delete one Comments
 // @Description Delete a Comment by id
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"
 // @Security BearerToken
