@@ -66,7 +66,7 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 
-	user := models.User{FullName: input.FullName,
+	user := models.Users{FullName: input.FullName,
 		Username: input.Username,
 		Email:    input.Email,
 		Password: string(hashedPassword),
@@ -122,7 +122,7 @@ func GetUserById(c *gin.Context) {
 func UpdateUser(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	//Get model if exist
-	var user models.User
+	var users models.Users
 
 	UserIdCurrent, errToken := token.ExtractTokenID(c)
 
@@ -137,29 +137,29 @@ func UpdateUser(c *gin.Context) {
 	}
 	if roleToken == "admin" {
 		fmt.Println("Admin")
-		if err := db.Where("id = ? ", c.Param("id")).First(&user).Error; err != nil {
+		if err := db.Where("id = ? ", c.Param("id")).First(&users).Error; err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "ID not found!"})
 			return
 		}
 	} else {
-		if err := db.Where("id = ? ", UserIdCurrent).First(&user).Error; err != nil {
+		if err := db.Where("id = ? ", UserIdCurrent).First(&users).Error; err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "ID not found!"})
 			return
 		}
 	}
 
-	var input users
+	var input models.Users
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	updateUser := models.User{FullName: input.FullName,
+	updateUsers := models.Users{FullName: input.FullName,
 		Username:  input.Username,
 		Email:     input.Email,
 		UpdatedAt: time.Now(),
 	}
 
-	var err error = db.Model(&user).Updates(updateUser).Error
+	var err error = db.Model(&users).Updates(updateUsers).Error
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -173,10 +173,10 @@ func UpdateUser(c *gin.Context) {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": errPassword.Error()})
 			return
 		}
-		updatePassword := models.User{
+		updatePassword := models.Users{
 			Password: string(hashedPassword),
 		}
-		var err error = db.Model(&user).Updates(updatePassword).Error
+		var err error = db.Model(&users).Updates(updatePassword).Error
 
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -184,7 +184,7 @@ func UpdateUser(c *gin.Context) {
 		}
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": user})
+	c.JSON(http.StatusOK, gin.H{"data": users})
 }
 
 //DeleteUser godoc
@@ -200,7 +200,7 @@ func UpdateUser(c *gin.Context) {
 func DeleteUser(c *gin.Context) {
 	//Get model if exist
 	db := c.MustGet("db").(*gorm.DB)
-	var user models.User
+	var user models.Users
 
 	if err := db.Where("id = ?", c.Param("id")).First(&user).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Data not found!"})

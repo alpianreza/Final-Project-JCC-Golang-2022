@@ -15,16 +15,16 @@ type (
 		CreatedAt   time.Time  `json:"created_at"`
 		UpdatedAt   time.Time  `json:"updated_at"`
 		UserID      uint       `gorm:"not null" json:"user_id"`
-		User        User       `gorm:"references:user_id" json:"user"`
 		CategoryID  int        `gorm:"not null" json:"category_id"`
-		Category    Category   `gorm:"foreignKey:category_id;constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"category"`
+		Users       []Users    `gorm:"foreignKey:id;references:UserID" "json:"users"`
+		Category    []Category `gorm:"foreignKey:category_id;constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"category"`
 		Comments    []Comments `gorm:"many2many:post_comments;constraint:OnUpdate:CASCADE,OnDelete:CASCADE;" json:"comments"`
 		Meta        []PostMeta `gorm:"foreignKey:post_id;" json:"meta"`
 	}
 	PostMeta struct {
-		MetaID    int    `gorm:"primaryKey" json:"meta_id"`
-		PostID    int    `gorm:"index" json:"post_id"`
-		MetaKey   string `gorm:"index" json:"meta_key"`
+		MetaID    int    `gorm:"primaryKey,index" json:"meta_id"`
+		PostID    int    `json:"post_id"`
+		MetaKey   string `json:"meta_key"`
 		MetaValue string `json:"meta_value"`
 	}
 )

@@ -37,7 +37,7 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	u := models.User{}
+	u := models.Users{}
 
 	u.Username = input.Username
 	u.Password = input.Password
@@ -76,7 +76,7 @@ func Register(c *gin.Context) {
 		return
 	}
 
-	u := models.User{}
+	u := models.Users{}
 
 	u.Username = input.Username
 	u.Email = input.Email

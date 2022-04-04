@@ -13,7 +13,7 @@ import (
 
 type (
 	// User
-	User struct {
+	Users struct {
 		ID        uint      `json:"id" gorm:"primary_key"`
 		FullName  string    `gorm:"not null;" json:"full_name"`
 		Username  string    `gorm:"not null;unique" json:"username"`
@@ -44,9 +44,9 @@ func LoginCheck(username string, password string, db *gorm.DB) (string, error) {
 
 	var err error
 
-	u := User{}
+	u := Users{}
 
-	err = db.Model(User{}).Where("username = ?", username).Take(&u).Error
+	err = db.Model(Users{}).Where("username = ?", username).Take(&u).Error
 
 	if err != nil {
 		return "", err
@@ -68,11 +68,11 @@ func LoginCheck(username string, password string, db *gorm.DB) (string, error) {
 
 }
 
-func (u *User) SaveUser(db *gorm.DB) (*User, error) {
+func (u *Users) SaveUser(db *gorm.DB) (*Users, error) {
 	//turn password into hash
 	hashedPassword, errPassword := bcrypt.GenerateFromPassword([]byte(u.Password), bcrypt.DefaultCost)
 	if errPassword != nil {
-		return &User{}, errPassword
+		return &Users{}, errPassword
 	}
 	u.Password = string(hashedPassword)
 	//remove spaces in username
@@ -80,7 +80,7 @@ func (u *User) SaveUser(db *gorm.DB) (*User, error) {
 
 	var err error = db.Create(&u).Error
 	if err != nil {
-		return &User{}, err
+		return &Users{}, err
 	}
 	return u, nil
 }

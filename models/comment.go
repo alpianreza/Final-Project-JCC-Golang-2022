@@ -10,7 +10,8 @@ type (
 	Comments struct {
 		ID          uint          `gorm:"primaryKey,colomn:id" json:"id"`
 		PostComment string        `json:"post_comment"`
-		UserID      uint          `gorm:"not null" json:"user_id"`
+		UserId      uint          `gorm:"not null" json:"user_id"`
+		User        Users         `gorm:"references:user_id" json:"user"`
 		Publish     bool          `gorm:"not null" json:"publish"`
 		CreatedAt   time.Time     `json:"created_at"`
 		UpdatedAt   time.Time     `json:"updated_at"`
@@ -19,7 +20,7 @@ type (
 	CommentMeta struct {
 		MetaID    uint   `gorm:"primaryKey" json:"meta_id"`
 		CommentID uint   `gorm:"index" json:"comment_id"`
-		MetaKey   string `gorm:"index" json:"meta_key"`
+		MetaKey   string `json:"meta_key"`
 		MetaValue string `json:"meta_value"`
 	}
 )
