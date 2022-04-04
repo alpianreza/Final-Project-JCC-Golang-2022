@@ -142,6 +142,10 @@ definitions:
         type: string
       id:
         type: integer
+      posts:
+        items:
+          $ref: '#/definitions/models.Posts'
+        type: array
       role:
         type: string
       updated_at:
@@ -161,8 +165,6 @@ definitions:
         type: string
       user:
         $ref: '#/definitions/models.User'
-      user_id:
-        type: integer
     type: object
   models.PostMeta:
     properties:
@@ -218,6 +220,10 @@ definitions:
         type: integer
       password:
         type: string
+      posts:
+        items:
+          $ref: '#/definitions/models.Posts'
+        type: array
       role:
         type: string
       updated_at:
@@ -301,7 +307,7 @@ paths:
             type: object
       security:
       - BearerToken: []
-      summary: Delete one category.
+      summary: Delete Category.
       tags:
       - Category
     get:
@@ -378,7 +384,7 @@ paths:
             type: object
       security:
       - BearerToken: []
-      summary: Delete one Comments
+      summary: Delete Comment
       tags:
       - Comments
   /comments:
@@ -488,7 +494,7 @@ paths:
             type: object
       security:
       - BearerToken: []
-      summary: Delete one Help.
+      summary: Delete Help.
       tags:
       - Help
     get:
@@ -635,7 +641,7 @@ paths:
             type: object
       security:
       - BearerToken: []
-      summary: Delete one Posts.
+      summary: Delete Posts.
       tags:
       - Posts
     get:
@@ -706,7 +712,7 @@ paths:
           schema:
             additionalProperties: true
             type: object
-      summary: Register as user.
+      summary: Register user.
       tags:
       - Auth
   /users:
@@ -783,7 +789,7 @@ paths:
             type: object
       security:
       - BearerToken: []
-      summary: Delete one user.
+      summary: Delete User.
       tags:
       - User
     get:

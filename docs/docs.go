@@ -130,7 +130,7 @@ const docTemplate = `{
                 "tags": [
                     "Category"
                 ],
-                "summary": "Delete one category.",
+                "summary": "Delete Category.",
                 "parameters": [
                     {
                         "type": "string",
@@ -222,7 +222,7 @@ const docTemplate = `{
                 "tags": [
                     "Comments"
                 ],
-                "summary": "Delete one Comments",
+                "summary": "Delete Comment",
                 "parameters": [
                     {
                         "type": "string",
@@ -421,7 +421,7 @@ const docTemplate = `{
                 "tags": [
                     "Help"
                 ],
-                "summary": "Delete one Help.",
+                "summary": "Delete Help.",
                 "parameters": [
                     {
                         "type": "string",
@@ -650,7 +650,7 @@ const docTemplate = `{
                 "tags": [
                     "Posts"
                 ],
-                "summary": "Delete one Posts.",
+                "summary": "Delete Posts.",
                 "parameters": [
                     {
                         "type": "string",
@@ -737,7 +737,7 @@ const docTemplate = `{
                 "tags": [
                     "Auth"
                 ],
-                "summary": "Register as user.",
+                "summary": "Register user.",
                 "parameters": [
                     {
                         "description": "the body to register as user",
@@ -891,7 +891,7 @@ const docTemplate = `{
                 "tags": [
                     "User"
                 ],
-                "summary": "Delete one user.",
+                "summary": "Delete User.",
                 "parameters": [
                     {
                         "type": "string",
@@ -1185,6 +1185,12 @@ const docTemplate = `{
                 "id": {
                     "type": "integer"
                 },
+                "posts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Posts"
+                    }
+                },
                 "role": {
                     "type": "string"
                 },
@@ -1213,9 +1219,6 @@ const docTemplate = `{
                 },
                 "user": {
                     "$ref": "#/definitions/models.User"
-                },
-                "user_id": {
-                    "type": "integer"
                 }
             }
         },
@@ -1300,6 +1303,12 @@ const docTemplate = `{
                 },
                 "password": {
                     "type": "string"
+                },
+                "posts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Posts"
+                    }
                 },
                 "role": {
                     "type": "string"

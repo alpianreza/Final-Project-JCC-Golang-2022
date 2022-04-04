@@ -173,7 +173,7 @@ func UpdateComment(c *gin.Context) {
 }
 
 //DeleteComment godoc
-// @Summary Delete one Comments
+// @Summary Delete Comment
 // @Description Delete a Comment by id
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"
 // @Security BearerToken

@@ -17,9 +17,9 @@ type (
 		Meta        []CommentMeta `gorm:"foreignKey:post_id;" json:"meta"`
 	}
 	CommentMeta struct {
-		MetaID    uint   `gorm:"primaryKey,index" json:"meta_id"`
-		CommentID uint   `json:"comment_id"`
-		MetaKey   string `json:"meta_key"`
+		MetaID    uint   `gorm:"primaryKey" json:"meta_id"`
+		CommentID uint   `gorm:"index" json:"comment_id"`
+		MetaKey   string `gorm:"index" json:"meta_key"`
 		MetaValue string `json:"meta_value"`
 	}
 )
