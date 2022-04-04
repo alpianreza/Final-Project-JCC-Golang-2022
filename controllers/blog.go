@@ -185,7 +185,7 @@ func UpdatePost(c *gin.Context) {
 }
 
 //DeletePost godoc
-// @Summary Delete one Posts.
+// @Summary Delete Posts.
 // @Description Delete a Posts by id.
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"
 // @Security BearerToken

@@ -123,7 +123,7 @@ func UpdateCategory(c *gin.Context) {
 }
 
 //DeleteCategory godoc
-// @Summary Delete one category.
+// @Summary Delete Category.
 // @Description Delete a category by id.
 // @Tags Category
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"

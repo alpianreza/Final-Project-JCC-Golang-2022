@@ -123,7 +123,7 @@ func UpdateHelp(c *gin.Context) {
 }
 
 //DeleteHelp godoc
-// @Summary Delete one Help.
+// @Summary Delete Help.
 // @Description Delete a Help by id.
 // @Tags Help
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"

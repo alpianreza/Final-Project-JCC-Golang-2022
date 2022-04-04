@@ -188,7 +188,7 @@ func UpdateUser(c *gin.Context) {
 }
 
 //DeleteUser godoc
-// @Summary Delete one user.
+// @Summary Delete User.
 // @Description Delete a user by id.
 // @Tags User
 // @Param Authorization header string true "Authorization. How to input in swagger : 'Bearer <insert_your_token_here>'"

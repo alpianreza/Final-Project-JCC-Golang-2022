@@ -22,9 +22,9 @@ type (
 		Meta        []PostMeta `gorm:"foreignKey:post_id;" json:"meta"`
 	}
 	PostMeta struct {
-		MetaID    int    `gorm:"primaryKey,index" json:"meta_id"`
-		PostID    int    `json:"post_id"`
-		MetaKey   string `json:"meta_key"`
+		MetaID    int    `gorm:"primaryKey" json:"meta_id"`
+		PostID    int    `gorm:"index" json:"post_id"`
+		MetaKey   string `gorm:"index" json:"meta_key"`
 		MetaValue string `json:"meta_value"`
 	}
 )

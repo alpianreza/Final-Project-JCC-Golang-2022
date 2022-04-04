@@ -60,7 +60,7 @@ func Login(c *gin.Context) {
 }
 
 // Register godoc
-// @Summary Register as user.
+// @Summary Register user.
 // @Description registering a user from public access.
 // @Tags Auth
 // @Param Body body RegisterInput true "the body to register as user"
