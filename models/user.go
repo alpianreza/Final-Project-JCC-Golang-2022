@@ -22,7 +22,6 @@ type (
 		Role      string    `json:"role"`
 		CreatedAt time.Time `json:"created_at"`
 		UpdatedAt time.Time `json:"updated_at"`
-		Posts     *[]Posts  `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 	}
 
 	Guest struct {
@@ -32,7 +31,6 @@ type (
 		Role      string    `json:"role"`
 		CreatedAt time.Time `json:"created_at"`
 		UpdatedAt time.Time `json:"updated_at"`
-		Posts     *[]Posts  `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 	}
 )
 
