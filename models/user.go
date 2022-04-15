@@ -14,7 +14,6 @@ import (
 type (
 	// User
 	Users struct {
-		gorm.Model
 		ID        uint      `json:"id" gorm:"primary_key"`
 		FullName  string    `json:"full_name"`
 		Username  string    `json:"username"`
@@ -27,7 +26,6 @@ type (
 	}
 
 	Guest struct {
-		gorm.Model
 		ID        uint      `json:"id" gorm:"primary_key"`
 		FullName  string    `json:"full_name"`
 		Username  string    `json:"username"`
