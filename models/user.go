@@ -15,7 +15,7 @@ type (
 	// User
 	Users struct {
 		gorm.Model
-		ID        uint      `json:"id"`
+		ID        uint      `json:"id" gorm:"primary_key"`
 		FullName  string    `json:"full_name"`
 		Username  string    `json:"username"`
 		Email     string    `json:"email"`
@@ -28,7 +28,7 @@ type (
 
 	Guest struct {
 		gorm.Model
-		ID        uint      `json:"id"`
+		ID        uint      `json:"id" gorm:"primary_key"`
 		FullName  string    `json:"full_name"`
 		Username  string    `json:"username"`
 		Role      string    `json:"role"`
