@@ -32,6 +32,7 @@ type (
 		Role      string    `json:"role"`
 		CreatedAt time.Time `json:"created_at"`
 		UpdatedAt time.Time `json:"updated_at"`
+		Posts     *[]Posts  `json:"posts" gorm:"foreignKey:user_id"`
 	}
 )
 
