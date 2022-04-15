@@ -1,10 +1,15 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type Help struct {
-	ID        int       `gorm:"primary_key" json:"id"`
-	User      Users     `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
+	gorm.Model
+	ID        int       `json:"id"`
+	User      Users     `json:"-"`
 	Content   string    `json:"content"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`

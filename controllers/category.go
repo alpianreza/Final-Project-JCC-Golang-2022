@@ -3,7 +3,6 @@ package controllers
 import (
 	"finalproject/models"
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -46,8 +45,7 @@ func CreateCategory(c *gin.Context) {
 	}
 
 	//Create Category
-	category := models.Category{Category: input.Category,
-		CreatedAt: time.Now()}
+	category := models.Category{Category: input.Category}
 	db := c.MustGet("db").(*gorm.DB)
 	var err error = db.Create(&category).Error
 
@@ -108,9 +106,7 @@ func UpdateCategory(c *gin.Context) {
 		return
 	}
 
-	updatedInput := models.Category{Category: input.Category,
-		UpdatedAt: time.Now(),
-	}
+	updatedInput := models.Category{Category: input.Category}
 
 	var err error = db.Model(&category).Updates(updatedInput).Error
 

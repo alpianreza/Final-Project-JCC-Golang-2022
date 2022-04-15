@@ -8,14 +8,15 @@ import (
 
 type (
 	Comments struct {
-		ID          uint          `gorm:"primaryKey,colomn:id" json:"id"`
+		gorm.Model
+		ID          uint          `json:"id"`
 		PostComment string        `json:"post_comment"`
-		UserId      uint          `gorm:"not null" json:"user_id"`
-		Users       Users         `gorm:"references:user_id" json:"user"`
-		Publish     bool          `gorm:"not null" json:"publish"`
+		UserId      uint          `son:"user_id"`
+		Users       Users         `json:"-"`
+		Publish     bool          `json:"publish"`
 		CreatedAt   time.Time     `json:"created_at"`
 		UpdatedAt   time.Time     `json:"updated_at"`
-		Meta        []CommentMeta `gorm:"foreignKey:post_id;" json:"meta"`
+		Meta        []CommentMeta `json:"-"`
 	}
 	CommentMeta struct {
 		MetaID    uint   `json:"meta_id"`
