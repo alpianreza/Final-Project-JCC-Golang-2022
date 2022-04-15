@@ -14,24 +14,24 @@ import (
 type (
 	// User
 	Users struct {
-		ID        uint      `gorm:"primaryKey,column:id" json:"id"`
-		FullName  string    `gorm:"not null;" json:"full_name"`
-		Username  string    `gorm:"not null;unique" json:"username"`
-		Email     string    `gorm:"not null;unique" json:"email"`
-		Password  string    `gorm:"not null;" json:"password"`
-		Role      string    `gorm:"not null;" json:"role"`
-		CreatedAt time.Time `gorm:"column:created_at" json:"created_at"`
-		UpdatedAt time.Time `gorm:"column:updated_at" json:"updated_at"`
+		ID        uint      `json:"id" gorm:"primary_key"`
+		FullName  string    `json:"full_name"`
+		Username  string    `json:"username"`
+		Email     string    `json:"email"`
+		Password  string    `json:"password"`
+		Role      string    `json:"role"`
+		CreatedAt time.Time `json:"created_at"`
+		UpdatedAt time.Time `json:"updated_at"`
 		Posts     *[]Posts  `json:"posts" gorm:"foreignKey:user_id"`
 	}
 
 	Guest struct {
-		ID        uint      `gorm:"primaryKey,column:id" json:"id"`
-		FullName  string    `gorm:"not null;" json:"full_name"`
-		Username  string    `gorm:"not null;unique" json:"username"`
-		Role      string    `gorm:"not null;" json:"role"`
-		CreatedAt time.Time `gorm:"column:created_at" json:"created_at"`
-		UpdatedAt time.Time `gorm:"column:updated_at" json:"updated_at"`
+		ID        uint      `json:"id" gorm:"primary_key"`
+		FullName  string    `json:"full_name"`
+		Username  string    `json:"username"`
+		Role      string    `json:"role"`
+		CreatedAt time.Time `json:"created_at"`
+		UpdatedAt time.Time `json:"updated_at"`
 		Posts     *[]Posts  `json:"posts" gorm:"foreignKey:user_id"`
 	}
 )
